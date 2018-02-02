@@ -10,6 +10,9 @@ public class VirtualPet {
 		this.description = description;
 	}
 
+	public VirtualPet(String name, String description, int hunger, int thirst, int boredom) {
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -21,6 +24,10 @@ public class VirtualPet {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public int getHunger() {
+		return 50;
 	}
 
 }
