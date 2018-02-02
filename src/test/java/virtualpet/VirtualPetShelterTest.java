@@ -1,17 +1,21 @@
 package virtualpet;
 
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
 public class VirtualPetShelterTest {
-	
+
 	private VirtualPetShelter petShelter;
 	private VirtualPet tommy;
 	private VirtualPet joey;
@@ -29,7 +33,7 @@ public class VirtualPetShelterTest {
 		VirtualPet returnedPet = petShelter.getPet("Tommy");
 		assertThat(returnedPet, is(tommy));
 	}
-	
+
 	@Test
 	public void shouldReturnAllPets() {
 		petShelter.addPet(tommy);
@@ -37,7 +41,7 @@ public class VirtualPetShelterTest {
 		Collection<VirtualPet> pets = petShelter.pets();
 		assertThat(pets, containsInAnyOrder(joey, tommy));
 	}
-	
+
 	@Test
 	public void shouldAdoptPet() {
 		petShelter.addPet(tommy);
@@ -46,7 +50,7 @@ public class VirtualPetShelterTest {
 		Collection<VirtualPet> pets = petShelter.pets();
 		assertThat(pets, contains(tommy));
 	}
-	
+
 	@Test
 	public void shouldHaveFeedFeedPet() {
 		petShelter.addPet(tommy);
@@ -54,7 +58,7 @@ public class VirtualPetShelterTest {
 		int hunger = petShelter.getPet("Tommy").getHunger();
 		assertThat(hunger, is(0));
 	}
-	
+
 	@Test
 	public void shouldHaveWaterWaterPet() {
 		petShelter.addPet(tommy);
@@ -62,7 +66,7 @@ public class VirtualPetShelterTest {
 		int thirst = petShelter.getPet("Tommy").getThirst();
 		assertThat(thirst, is(0));
 	}
-	
+
 	@Test
 	public void shouldHavePlayWithPet() {
 		petShelter.addPet(tommy);
@@ -70,5 +74,20 @@ public class VirtualPetShelterTest {
 		petShelter.play(name);
 		int boredom = petShelter.getPet(name).getBoredom();
 		assertThat(boredom, is(0));
+	}
+
+	@Test
+	public void shouldHaveTickUpdatePetsNeeds() {
+		petShelter.addPet(tommy);
+		petShelter.addPet(joey);
+		petShelter.tick();
+		Collection<VirtualPet> pets = petShelter.pets();
+		VirtualPet expectedTommy = new VirtualPet("Tommy", "Boy this one stinks");
+		VirtualPet expectedJoey = new VirtualPet("Joey", "That's one cool pet");
+		expectedTommy.tick();
+		expectedJoey.tick();
+		for (VirtualPet pet : pets) {
+			assertThat(pet.getHunger(), anyOf(is(expectedTommy.getHunger()), is(expectedJoey.getHunger())));
+		}
 	}
 }

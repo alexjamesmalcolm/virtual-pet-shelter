@@ -36,4 +36,8 @@ public class VirtualPetShelter {
 		getPet(name).play();
 	}
 
+	public void tick() {
+		pets.forEach((name, pet) -> pet.tick());
+	}
+
 }
