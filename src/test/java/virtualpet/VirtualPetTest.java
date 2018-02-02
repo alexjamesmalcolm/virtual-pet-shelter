@@ -41,4 +41,12 @@ public class VirtualPetTest {
 		int boredom = underTest.getBoredom();
 		assertThat(boredom, is(50));
 	}
+	
+	@Test
+	public void shouldFeedPet() {
+		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 50, 0, 0);
+		underTest.feed();
+		int hunger = underTest.getHunger();
+		assertThat(hunger, is(0));
+	}
 }
