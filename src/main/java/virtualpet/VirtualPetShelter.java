@@ -54,7 +54,7 @@ public class VirtualPetShelter {
 	}
 
 	public int count() {
-		return 1;
+		return pets.size();
 	}
 
 }

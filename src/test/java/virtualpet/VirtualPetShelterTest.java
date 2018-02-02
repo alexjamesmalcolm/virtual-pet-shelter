@@ -123,11 +123,19 @@ public class VirtualPetShelterTest {
 		String actual = petShelter.toString();
 		assertThat(actual, is(message));
 	}
-	
+
 	@Test
 	public void shouldHaveOnePet() {
 		petShelter.addPet(joey);
 		int number = petShelter.count();
 		assertThat(number, is(1));
+	}
+
+	@Test
+	public void shouldHaveTwoPets() {
+		petShelter.addPet(joey);
+		petShelter.addPet(tommy);
+		int number = petShelter.count();
+		assertThat(number, is(2));
 	}
 }
