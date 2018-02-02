@@ -28,4 +28,8 @@ public class VirtualPetShelter {
 		pets.forEach((name, pet) -> pet.feed());
 	}
 
+	public void water() {
+		pets.forEach((name, pet) -> pet.water());
+	}
+
 }
