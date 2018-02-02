@@ -53,4 +53,8 @@ public class VirtualPetShelter {
 		return message;
 	}
 
+	public int count() {
+		return 1;
+	}
+
 }

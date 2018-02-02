@@ -8,7 +8,9 @@ public class VirtualPetShelterApp {
 		Scanner input = new Scanner(System.in);
 		VirtualPetShelter shelter = new VirtualPetShelter();
 		while (true) {
+			System.out.println("This is the status of your pets:\n");
 			System.out.println(shelter.toString());
+			
 			String choice = input.next();
 			if (choice.equals("1")) {
 				shelter.feed();

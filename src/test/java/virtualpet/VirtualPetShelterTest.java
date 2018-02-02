@@ -123,4 +123,11 @@ public class VirtualPetShelterTest {
 		String actual = petShelter.toString();
 		assertThat(actual, is(message));
 	}
+	
+	@Test
+	public void shouldHaveOnePet() {
+		petShelter.addPet(joey);
+		int number = petShelter.count();
+		assertThat(number, is(1));
+	}
 }
