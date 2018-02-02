@@ -128,11 +128,11 @@ public class VirtualPetTest {
 		int boredom = joey.getBoredom();
 		assertThat(boredom, is(DEFAULT_BOREDOM));
 	}
-	
+
 	@Test
 	public void shouldBeCalledJoey() {
 		String name = joey.getName();
 		assertThat(name, is("Joey"));
 	}
-	
+
 }
