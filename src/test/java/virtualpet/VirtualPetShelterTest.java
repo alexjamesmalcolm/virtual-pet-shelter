@@ -3,18 +3,28 @@ package virtualpet;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import org.hamcrest.Matchers;
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class VirtualPetShelterTest {
+	
+	private VirtualPetShelter underTest;
+	private VirtualPet tommy;
+
+	@Before
+	public void setup() {
+		underTest = new VirtualPetShelter();
+		tommy = new VirtualPet("Tommy");
+	}
 
 	@Test
 	public void shouldAddVirtualPet() {
-		VirtualPetShelter underTest = new VirtualPetShelter();
-		VirtualPet pet = new VirtualPet("Tommy");
-		underTest.addPet(pet);
+		underTest.addPet(tommy);
 		VirtualPet returnedPet = underTest.getPet("Tommy");
-		assertThat(returnedPet, is(pet));
+		assertThat(returnedPet, is(tommy));
+	}
+	
+	@Test
+	public void shouldReturnAllPets() {
 	}
 }
