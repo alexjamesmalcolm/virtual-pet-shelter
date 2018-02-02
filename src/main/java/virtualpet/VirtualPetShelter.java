@@ -57,4 +57,8 @@ public class VirtualPetShelter {
 		return pets.size();
 	}
 
+	public String getNames() {
+		return "[Joey] That's one cool pet\n[Tommy] Boy this one stinks\n";
+	}
+
 }

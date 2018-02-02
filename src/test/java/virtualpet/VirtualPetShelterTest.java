@@ -138,4 +138,13 @@ public class VirtualPetShelterTest {
 		int number = petShelter.count();
 		assertThat(number, is(2));
 	}
+	
+	@Test
+	public void shouldReturnNamesOfTwoPets() {
+		petShelter.addPet(joey);
+		petShelter.addPet(tommy);
+		String message = "[Joey] That's one cool pet\n[Tommy] Boy this one stinks\n";
+		String actual = petShelter.getNames();
+		assertThat(actual, is(message));
+	}
 }
