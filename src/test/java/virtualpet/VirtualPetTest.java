@@ -49,4 +49,12 @@ public class VirtualPetTest {
 		int hunger = underTest.getHunger();
 		assertThat(hunger, is(0));
 	}
+	
+	@Test
+	public void shouldWaterPet() {
+		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 0, 50, 0);
+		underTest.water();
+		int thirst = underTest.getThirst();
+		assertThat(thirst, is(0));
+	}
 }
