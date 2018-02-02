@@ -1,5 +1,6 @@
 package virtualpet;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -11,28 +12,38 @@ import org.junit.Test;
 
 public class VirtualPetShelterTest {
 	
-	private VirtualPetShelter underTest;
+	private VirtualPetShelter petShelter;
 	private VirtualPet tommy;
+	private VirtualPet joey;
 
 	@Before
 	public void setup() {
-		underTest = new VirtualPetShelter();
+		petShelter = new VirtualPetShelter();
 		tommy = new VirtualPet("Tommy");
+		joey = new VirtualPet("Joey");
 	}
 
 	@Test
 	public void shouldAddVirtualPet() {
-		underTest.addPet(tommy);
-		VirtualPet returnedPet = underTest.getPet("Tommy");
+		petShelter.addPet(tommy);
+		VirtualPet returnedPet = petShelter.getPet("Tommy");
 		assertThat(returnedPet, is(tommy));
 	}
 	
 	@Test
 	public void shouldReturnAllPets() {
-		VirtualPet joey = new VirtualPet("Joey");
-		underTest.addPet(tommy);
-		underTest.addPet(joey);
-		Collection<VirtualPet> pets = underTest.pets();
+		petShelter.addPet(tommy);
+		petShelter.addPet(joey);
+		Collection<VirtualPet> pets = petShelter.pets();
 		assertThat(pets, containsInAnyOrder(joey, tommy));
+	}
+	
+	@Test
+	public void shouldAdoptPet() {
+		petShelter.addPet(tommy);
+		petShelter.addPet(joey);
+		petShelter.adoptPet(joey.getName());
+		Collection<VirtualPet> pets = petShelter.pets();
+		assertThat(pets, contains(tommy));
 	}
 }

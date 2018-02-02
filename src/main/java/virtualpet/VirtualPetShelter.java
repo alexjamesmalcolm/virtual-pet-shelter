@@ -20,4 +20,8 @@ public class VirtualPetShelter {
 		return pets.values();
 	}
 
+	public void adoptPet(String name) {
+		pets.remove(name);
+	}
+
 }
