@@ -99,7 +99,6 @@ public class VirtualPetShelterTest {
 		String line4 = "Tommy\t|50\t|50\t|50\n";
 		String message = line1 + line2 + line3 + line4;
 		String actual = petShelter.toString();
-		// assertThat(actual, is(message));
 		assertEquals(message, actual);
 	}
 
@@ -115,10 +114,9 @@ public class VirtualPetShelterTest {
 		String line5 = "Tommy\t|50\t|50\t|50\n";
 		String message = line1 + line2 + line3 + line4 + line5;
 		String actual = petShelter.toString();
-		// assertThat(actual, is(message));
 		assertEquals(message, actual);
 	}
-	
+
 	@Test
 	public void shouldHaveToStringForNoPets() {
 		String message = "There are no pets in the shelter.";

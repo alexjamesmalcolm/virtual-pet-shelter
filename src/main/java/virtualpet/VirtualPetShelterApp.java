@@ -25,7 +25,6 @@ public class VirtualPetShelterApp {
 			} else if (choice.equals("6")) {
 				break;
 			}
-			break;
 		}
 		input.close();
 	}
