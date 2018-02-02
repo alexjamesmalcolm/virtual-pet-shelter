@@ -1,7 +1,8 @@
 package virtualpet;
 
-import org.hamcrest.Matchers;
-import org.junit.Assert;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
 
 public class VirtualPetTest {
@@ -10,6 +11,13 @@ public class VirtualPetTest {
 	public void shouldHaveDescription() {
 		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks");
 		String description = underTest.getDescription();
-		Assert.assertThat(description, Matchers.is("Boy this one stinks"));
+		assertThat(description, is("Boy this one stinks"));
+	}
+	
+	@Test
+	public void shouldHaveDifferentDescription() {
+		VirtualPet underTest = new VirtualPet("Joey", "That's one cool pet");
+		String description = underTest.getDescription();
+		assertThat(description,  is("That's one cool pet"));
 	}
 }
