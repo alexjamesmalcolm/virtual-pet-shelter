@@ -30,4 +30,8 @@ public class VirtualPet {
 		return 50;
 	}
 
+	public int getThirst() {
+		return 50;
+	}
+
 }

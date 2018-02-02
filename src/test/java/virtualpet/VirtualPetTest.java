@@ -27,4 +27,11 @@ public class VirtualPetTest {
 		int hunger = underTest.getHunger();
 		assertThat(hunger, is(50));
 	}
+	
+	@Test
+	public void shouldHaveThirst() {
+		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 0, 50, 0);
+		int thirst = underTest.getThirst();
+		assertThat(thirst, is(50));
+	}
 }
