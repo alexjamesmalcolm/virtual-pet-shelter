@@ -87,4 +87,17 @@ public class VirtualPetShelterTest {
 			assertThat(pet.getHunger(), anyOf(is(expectedTommy.getHunger()), is(expectedJoey.getHunger())));
 		}
 	}
+	
+	@Test
+	public void shouldHaveToStringForTwoPets() {
+		petShelter.addPet(joey);
+		petShelter.addPet(tommy);
+		String line1 = "Name\t|Hunger\t|Thirst\t|Boredom\n";
+		String line2 = "--------|-------|-------|-------\n";
+		String line3 = "Joey\t|50\t|50\t|50\n";
+		String line4 = "Tommy\t|50\t|50\t|50";
+		String message = line1 + line2 + line3 + line4;
+		String actual = petShelter.toString();
+		assertThat(actual, is(message));
+	}
 }
