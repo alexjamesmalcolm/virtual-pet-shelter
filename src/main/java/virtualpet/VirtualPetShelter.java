@@ -32,4 +32,8 @@ public class VirtualPetShelter {
 		pets.forEach((name, pet) -> pet.water());
 	}
 
+	public void play(String name) {
+		getPet(name).play();
+	}
+
 }

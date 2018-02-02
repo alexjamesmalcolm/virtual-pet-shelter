@@ -62,4 +62,13 @@ public class VirtualPetShelterTest {
 		int thirst = petShelter.getPet("Tommy").getThirst();
 		assertThat(thirst, is(0));
 	}
+	
+	@Test
+	public void shouldHavePlayWithPet() {
+		petShelter.addPet(tommy);
+		String name = tommy.getName();
+		petShelter.play(name);
+		int boredom = petShelter.getPet(name).getBoredom();
+		assertThat(boredom, is(0));
+	}
 }
