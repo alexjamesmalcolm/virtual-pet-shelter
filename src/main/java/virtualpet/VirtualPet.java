@@ -6,6 +6,7 @@ public class VirtualPet {
 	private String description;
 	private int hunger;
 	private int thirst;
+	private int boredom;
 
 	public VirtualPet(String name, String description) {
 		this.name = name;
@@ -15,6 +16,7 @@ public class VirtualPet {
 	public VirtualPet(String name, String description, int hunger, int thirst, int boredom) {
 		this.hunger = hunger;
 		this.thirst = thirst;
+		this.boredom = boredom;
 	}
 
 	public String getName() {
@@ -39,7 +41,7 @@ public class VirtualPet {
 	}
 
 	public int getBoredom() {
-		return 50;
+		return boredom;
 	}
 
 	public void feed() {
@@ -48,6 +50,10 @@ public class VirtualPet {
 
 	public void water() {
 		thirst = 0;
+	}
+
+	public void play() {
+		boredom = 0;
 	}
 
 }

@@ -27,21 +27,21 @@ public class VirtualPetTest {
 		int hunger = underTest.getHunger();
 		assertThat(hunger, is(50));
 	}
-	
+
 	@Test
 	public void shouldHaveThirst() {
 		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 0, 50, 0);
 		int thirst = underTest.getThirst();
 		assertThat(thirst, is(50));
 	}
-	
+
 	@Test
 	public void shouldHaveBoredom() {
 		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 0, 0, 50);
 		int boredom = underTest.getBoredom();
 		assertThat(boredom, is(50));
 	}
-	
+
 	@Test
 	public void shouldFeedPet() {
 		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 50, 0, 0);
@@ -49,12 +49,20 @@ public class VirtualPetTest {
 		int hunger = underTest.getHunger();
 		assertThat(hunger, is(0));
 	}
-	
+
 	@Test
 	public void shouldWaterPet() {
 		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 0, 50, 0);
 		underTest.water();
 		int thirst = underTest.getThirst();
 		assertThat(thirst, is(0));
+	}
+
+	@Test
+	public void shouldPlayWithPet() {
+		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 0, 0, 50);
+		underTest.play();
+		int boredom = underTest.getBoredom();
+		assertThat(boredom, is(0));
 	}
 }
