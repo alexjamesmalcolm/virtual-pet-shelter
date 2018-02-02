@@ -118,4 +118,11 @@ public class VirtualPetShelterTest {
 		// assertThat(actual, is(message));
 		assertEquals(message, actual);
 	}
+	
+	@Test
+	public void shouldHaveToStringForNoPets() {
+		String message = "There are no pets in the shelter.";
+		String actual = petShelter.toString();
+		assertThat(actual, is(message));
+	}
 }

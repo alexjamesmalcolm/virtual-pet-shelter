@@ -42,9 +42,11 @@ public class VirtualPetShelter {
 
 	@Override
 	public String toString() {
+		if(pets().size() == 0) {
+			return "There are no pets in the shelter.";
+		}
 		String message = "Name\t|Hunger\t|Thirst\t|Boredom\n--------|-------|-------|-------\n";
 		for (VirtualPet pet : pets()) {
-			 System.out.println(pet.getName());
 			message += pet.getName() + "\t|" + pet.getHunger() + "\t|" + pet.getThirst() + "\t|" + pet.getBoredom()
 					+ "\n";
 		}
