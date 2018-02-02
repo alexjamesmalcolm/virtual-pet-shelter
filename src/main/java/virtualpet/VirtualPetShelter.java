@@ -58,7 +58,12 @@ public class VirtualPetShelter {
 	}
 
 	public String getNames() {
-		return "[Joey] That's one cool pet\n[Tommy] Boy this one stinks\n";
+		String message = "";
+		for (VirtualPet pet : pets()) {
+			message += "[" + pet.getName() + "] " + pet.getDescription() + "\n";
+		}
+		return message;
+		// return "[Joey] That's one cool pet\n[Tommy] Boy this one stinks\n";
 	}
 
 }
