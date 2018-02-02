@@ -121,4 +121,10 @@ public class VirtualPetTest {
 		int thirst = joey.getThirst();
 		assertThat(thirst, is(DEFAULT_THIRST));
 	}
+	
+	@Test
+	public void shouldHaveDefaultBoredom() {
+		int boredom = joey.getBoredom();
+		assertThat(boredom, is(DEFAULT_BOREDOM));
+	}
 }
