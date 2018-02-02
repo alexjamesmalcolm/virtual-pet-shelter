@@ -19,8 +19,8 @@ public class VirtualPetShelterTest {
 	@Before
 	public void setup() {
 		petShelter = new VirtualPetShelter();
-		tommy = new VirtualPet("Tommy");
-		joey = new VirtualPet("Joey");
+		tommy = new VirtualPet("Tommy", "Boy this one stinks");
+		joey = new VirtualPet("Joey", "That's one cool pet");
 	}
 
 	@Test
@@ -45,5 +45,13 @@ public class VirtualPetShelterTest {
 		petShelter.adoptPet(joey.getName());
 		Collection<VirtualPet> pets = petShelter.pets();
 		assertThat(pets, contains(tommy));
+	}
+	
+	@Test
+	public void shouldHaveFeedFeedPet() {
+		petShelter.addPet(tommy);
+		petShelter.feed();
+		int hunger = petShelter.getPet("Tommy").getHunger();
+		assertThat(hunger, is(0));
 	}
 }

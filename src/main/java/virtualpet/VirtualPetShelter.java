@@ -24,4 +24,8 @@ public class VirtualPetShelter {
 		pets.remove(name);
 	}
 
+	public void feed() {
+		pets.forEach((name, pet) -> pet.feed());
+	}
+
 }

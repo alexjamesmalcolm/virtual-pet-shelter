@@ -20,6 +20,7 @@ public class VirtualPet {
 	}
 
 	public VirtualPet(String name, String description, int hunger, int thirst, int boredom) {
+		this.name = name;
 		this.description = description;
 		this.hunger = hunger;
 		this.thirst = thirst;
@@ -32,7 +33,8 @@ public class VirtualPet {
 
 	@Override
 	public String toString() {
-		return "VirtualPet {name: " + name + "}";
+		return "VirtualPet {name: " + name + ", description: " + description + ", hunger: " + hunger + ", thirst: "
+				+ thirst + ", boredom: " + boredom + "}";
 	}
 
 	public String getDescription() {

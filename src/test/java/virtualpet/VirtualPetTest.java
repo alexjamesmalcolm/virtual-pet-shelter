@@ -134,4 +134,5 @@ public class VirtualPetTest {
 		String name = joey.getName();
 		assertThat(name, is("Joey"));
 	}
+	
 }
