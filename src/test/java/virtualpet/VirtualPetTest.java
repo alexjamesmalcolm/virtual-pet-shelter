@@ -2,18 +2,19 @@ package virtualpet;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static virtualpet.VirtualPet.BOREDOM_PER_TICK;
+import static virtualpet.VirtualPet.DEFAULT_BOREDOM;
+import static virtualpet.VirtualPet.DEFAULT_HUNGER;
+import static virtualpet.VirtualPet.DEFAULT_THIRST;
+import static virtualpet.VirtualPet.HUNGER_PER_TICK;
+import static virtualpet.VirtualPet.HUNGER_TO_THIRST;
+import static virtualpet.VirtualPet.THIRST_PER_TICK;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class VirtualPetTest {
 
-	private static final int HUNGER_PER_TICK = VirtualPet.HUNGER_PER_TICK;
-	private static final int THIRST_PER_TICK = VirtualPet.THIRST_PER_TICK;
-	private static final int BOREDOM_PER_TICK = VirtualPet.BOREDOM_PER_TICK;
-	private static final int HUNGER_TO_THIRST = VirtualPet.HUNGER_TO_THIRST;
-	private static final int DEFAULT_HUNGER = VirtualPet.DEFAULT_HUNGER;
-	private static final int DEFAULT_THIRST = VirtualPet.DEFAULT_THIRST;
 	private VirtualPet tommy;
 	private VirtualPet joey;
 
@@ -109,22 +110,28 @@ public class VirtualPetTest {
 		int thirst = tommy.getThirst();
 		assertThat(thirst, is(50 + 50 / HUNGER_TO_THIRST));
 	}
-	
+
 	@Test
 	public void shouldHaveDefaultHunger() {
 		int hunger = joey.getHunger();
 		assertThat(hunger, is(DEFAULT_HUNGER));
 	}
-	
+
 	@Test
 	public void shouldHaveDefaultThirst() {
 		int thirst = joey.getThirst();
 		assertThat(thirst, is(DEFAULT_THIRST));
 	}
-	
+
 	@Test
 	public void shouldHaveDefaultBoredom() {
 		int boredom = joey.getBoredom();
 		assertThat(boredom, is(DEFAULT_BOREDOM));
+	}
+	
+	@Test
+	public void shouldBeCalledJoey() {
+		String name = joey.getName();
+		assertThat(name, is("Joey"));
 	}
 }
