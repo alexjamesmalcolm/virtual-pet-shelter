@@ -6,6 +6,8 @@ public class VirtualPet {
 	public static final int THIRST_PER_TICK = 1;
 	public static final int BOREDOM_PER_TICK = 1;
 	public static final int HUNGER_TO_THIRST = 2;
+	public static final int DEFAULT_HUNGER = 50;
+	public static final int DEFAULT_THIRST = 50;
 	private String name;
 	private String description;
 	private int hunger;
@@ -13,11 +15,11 @@ public class VirtualPet {
 	private int boredom;
 
 	public VirtualPet(String name, String description) {
-		this.name = name;
-		this.description = description;
+		this(name, description, DEFAULT_HUNGER, DEFAULT_THIRST, 0);
 	}
 
 	public VirtualPet(String name, String description, int hunger, int thirst, int boredom) {
+		this.description = description;
 		this.hunger = hunger;
 		this.thirst = thirst;
 		this.boredom = boredom;

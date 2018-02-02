@@ -12,11 +12,15 @@ public class VirtualPetTest {
 	private static final int THIRST_PER_TICK = VirtualPet.THIRST_PER_TICK;
 	private static final int BOREDOM_PER_TICK = VirtualPet.BOREDOM_PER_TICK;
 	private static final int HUNGER_TO_THIRST = VirtualPet.HUNGER_TO_THIRST;
+	private static final int DEFAULT_HUNGER = VirtualPet.DEFAULT_HUNGER;
+	private static final int DEFAULT_THIRST = VirtualPet.DEFAULT_THIRST;
 	private VirtualPet tommy;
-	
+	private VirtualPet joey;
+
 	@Before
 	public void setup() {
 		tommy = new VirtualPet("Tommy", "Boy this one stinks", 50, 50, 50);
+		joey = new VirtualPet("Joey", "That's one cool pet");
 	}
 
 	@Test
@@ -77,32 +81,44 @@ public class VirtualPetTest {
 		int boredom = underTest.getBoredom();
 		assertThat(boredom, is(0));
 	}
-	
+
 	@Test
 	public void shouldHaveTickIncreaseHunger() {
 		tommy.tick();
 		int hunger = tommy.getHunger();
 		assertThat(hunger, is(50 + HUNGER_PER_TICK));
 	}
-	
+
 	@Test
 	public void shouldHaveTickIncreaseThirst() {
 		tommy.tick();
 		int thirst = tommy.getThirst();
 		assertThat(thirst, is(50 + THIRST_PER_TICK));
 	}
-	
+
 	@Test
 	public void shouldHaveTickIncreaseBoredom() {
 		tommy.tick();
 		int boredom = tommy.getBoredom();
 		assertThat(boredom, is(50 + BOREDOM_PER_TICK));
 	}
-	
+
 	@Test
 	public void shouldHaveFeedIncreaseThirst() {
 		tommy.feed();
 		int thirst = tommy.getThirst();
 		assertThat(thirst, is(50 + 50 / HUNGER_TO_THIRST));
+	}
+	
+	@Test
+	public void shouldHaveDefaultHunger() {
+		int hunger = joey.getHunger();
+		assertThat(hunger, is(DEFAULT_HUNGER));
+	}
+	
+	@Test
+	public void shouldHaveDefaultThirst() {
+		int thirst = joey.getThirst();
+		assertThat(thirst, is(DEFAULT_THIRST));
 	}
 }
