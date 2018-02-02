@@ -2,6 +2,7 @@ package virtualpet;
 
 public class VirtualPet {
 
+	public static final int HUNGER_PER_TICK = 1;
 	private String name;
 	private String description;
 	private int hunger;
@@ -54,6 +55,10 @@ public class VirtualPet {
 
 	public void play() {
 		boredom = 0;
+	}
+
+	public void tick() {
+		hunger += HUNGER_PER_TICK;
 	}
 
 }

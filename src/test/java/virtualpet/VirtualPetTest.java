@@ -7,6 +7,8 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 
+	private static final int HUNGER_PER_TICK = VirtualPet.HUNGER_PER_TICK;
+
 	@Test
 	public void shouldHaveDescription() {
 		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks");
@@ -64,5 +66,13 @@ public class VirtualPetTest {
 		underTest.play();
 		int boredom = underTest.getBoredom();
 		assertThat(boredom, is(0));
+	}
+	
+	@Test
+	public void shouldHaveTickIncreaseHunger() {
+		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 50, 50, 50);
+		underTest.tick();
+		int hunger = underTest.getHunger();
+		assertThat(hunger, is(50 + HUNGER_PER_TICK));
 	}
 }
