@@ -10,6 +10,7 @@ public class VirtualPetTest {
 
 	private static final int HUNGER_PER_TICK = VirtualPet.HUNGER_PER_TICK;
 	private static final int THIRST_PER_TICK = VirtualPet.THIRST_PER_TICK;
+	private static final int BOREDOM_PER_TICK = VirtualPet.BOREDOM_PER_TICK;
 	private VirtualPet tommy;
 	
 	@Before
@@ -88,5 +89,12 @@ public class VirtualPetTest {
 		tommy.tick();
 		int thirst = tommy.getThirst();
 		assertThat(thirst, is(50 + THIRST_PER_TICK));
+	}
+	
+	@Test
+	public void shouldHaveTickIncreaseBoredom() {
+		tommy.tick();
+		int boredom = tommy.getBoredom();
+		assertThat(boredom, is(50 + BOREDOM_PER_TICK));
 	}
 }
