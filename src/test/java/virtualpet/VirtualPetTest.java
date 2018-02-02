@@ -3,11 +3,19 @@ package virtualpet;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class VirtualPetTest {
 
 	private static final int HUNGER_PER_TICK = VirtualPet.HUNGER_PER_TICK;
+	private static final int THIRST_PER_TICK = VirtualPet.THIRST_PER_TICK;
+	private VirtualPet tommy;
+	
+	@Before
+	public void setup() {
+		tommy = new VirtualPet("Tommy", "Boy this one stinks", 50, 50, 50);
+	}
 
 	@Test
 	public void shouldHaveDescription() {
@@ -70,9 +78,15 @@ public class VirtualPetTest {
 	
 	@Test
 	public void shouldHaveTickIncreaseHunger() {
-		VirtualPet underTest = new VirtualPet("Tommy", "Boy this one stinks", 50, 50, 50);
-		underTest.tick();
-		int hunger = underTest.getHunger();
+		tommy.tick();
+		int hunger = tommy.getHunger();
 		assertThat(hunger, is(50 + HUNGER_PER_TICK));
+	}
+	
+	@Test
+	public void shouldHaveTickIncreaseThirst() {
+		tommy.tick();
+		int thirst = tommy.getThirst();
+		assertThat(thirst, is(50 + THIRST_PER_TICK));
 	}
 }
