@@ -1,15 +1,23 @@
 package virtualpet;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 public class VirtualPetShelter {
 
-	private VirtualPet pet;
+	private Map<String, VirtualPet> pets = new HashMap<String, VirtualPet>();
 
 	public void addPet(VirtualPet pet) {
-		this.pet = pet;
+		pets.put(pet.getName(), pet);
 	}
 
 	public VirtualPet getPet(String name) {
-		return pet;
+		return pets.get(name);
+	}
+
+	public Collection<VirtualPet> pets() {
+		return pets.values();
 	}
 
 }

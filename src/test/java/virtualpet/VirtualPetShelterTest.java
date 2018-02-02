@@ -1,7 +1,10 @@
 package virtualpet;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
+import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,5 +29,10 @@ public class VirtualPetShelterTest {
 	
 	@Test
 	public void shouldReturnAllPets() {
+		VirtualPet joey = new VirtualPet("Joey");
+		underTest.addPet(tommy);
+		underTest.addPet(joey);
+		Collection<VirtualPet> pets = underTest.pets();
+		assertThat(pets, containsInAnyOrder(joey, tommy));
 	}
 }
