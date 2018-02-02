@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
@@ -87,7 +88,7 @@ public class VirtualPetShelterTest {
 			assertThat(pet.getHunger(), anyOf(is(expectedTommy.getHunger()), is(expectedJoey.getHunger())));
 		}
 	}
-	
+
 	@Test
 	public void shouldHaveToStringForTwoPets() {
 		petShelter.addPet(joey);
@@ -95,9 +96,26 @@ public class VirtualPetShelterTest {
 		String line1 = "Name\t|Hunger\t|Thirst\t|Boredom\n";
 		String line2 = "--------|-------|-------|-------\n";
 		String line3 = "Joey\t|50\t|50\t|50\n";
-		String line4 = "Tommy\t|50\t|50\t|50";
+		String line4 = "Tommy\t|50\t|50\t|50\n";
 		String message = line1 + line2 + line3 + line4;
 		String actual = petShelter.toString();
-		assertThat(actual, is(message));
+		// assertThat(actual, is(message));
+		assertEquals(message, actual);
+	}
+
+	@Test
+	public void shouldHaveToStringForThreePets() {
+		petShelter.addPet(joey);
+		petShelter.addPet(tommy);
+		petShelter.addPet(new VirtualPet("Dee dee", "", 20, 30, 60));
+		String line1 = "Name\t|Hunger\t|Thirst\t|Boredom\n";
+		String line2 = "--------|-------|-------|-------\n";
+		String line3 = "Dee dee\t|20\t|30\t|60\n";
+		String line4 = "Joey\t|50\t|50\t|50\n";
+		String line5 = "Tommy\t|50\t|50\t|50\n";
+		String message = line1 + line2 + line3 + line4 + line5;
+		String actual = petShelter.toString();
+		// assertThat(actual, is(message));
+		assertEquals(message, actual);
 	}
 }

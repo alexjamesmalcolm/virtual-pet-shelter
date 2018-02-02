@@ -1,12 +1,12 @@
 package virtualpet;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class VirtualPetShelter {
 
-	private Map<String, VirtualPet> pets = new HashMap<String, VirtualPet>();
+	private Map<String, VirtualPet> pets = new TreeMap<String, VirtualPet>();
 
 	public void addPet(VirtualPet pet) {
 		pets.put(pet.getName(), pet);
@@ -39,14 +39,15 @@ public class VirtualPetShelter {
 	public void tick() {
 		pets.forEach((name, pet) -> pet.tick());
 	}
-	
+
 	@Override
 	public String toString() {
-		String line1 = "Name\t|Hunger\t|Thirst\t|Boredom\n";
-		String line2 = "--------|-------|-------|-------\n";
-		String line3 = "Joey\t|50\t|50\t|50\n";
-		String line4 = "Tommy\t|50\t|50\t|50";
-		String message = line1 + line2 + line3 + line4;
+		String message = "Name\t|Hunger\t|Thirst\t|Boredom\n--------|-------|-------|-------\n";
+		for (VirtualPet pet : pets()) {
+			 System.out.println(pet.getName());
+			message += pet.getName() + "\t|" + pet.getHunger() + "\t|" + pet.getThirst() + "\t|" + pet.getBoredom()
+					+ "\n";
+		}
 		return message;
 	}
 
